@@ -18,11 +18,22 @@
 (setf (aref tiposE 5) "Volador, Planta y Dragon")
 
 ;;; Clase Vista ****************************************************
+
 (defun bienvenida ()
     (print "Bienvenido a la tabla de tipos de pokemon"))
+    
+(defun pedir ()
+    (print "Cuantos tipos tiene su pokemon?? ")
+    (print "1. Solo un tipo")
+    (print "2. Tiene dos tipos"))
 
-(defun menut1 ()
-    (print "Selecciona el primer tipo de pokemon: ")
+(defun primerQ ()
+    (print "Selecciona el primer tipo de pokemon: "))
+    
+(defun segundoQ ()
+    (print "Selecciona el segundo tipo de pokemon: "))
+
+(defun menut ()
     (print "1. Agua")
     (print "2. Planta")
     (print "3. Fuego")
@@ -53,32 +64,52 @@
     (print "No ingreso un tipo de pokemon válido"))
 
 ;;; Clase Controlador & Main ***************************************
+
 (bienvenida)
 
-(menut1) ;;; Para mostrar los tipos de pokemon
+(defvar *controlrep* 0)
 
-;;; Para pedir la entrada de usuario
+(pedir)
 (princ "")
-(setq b (read))
+(setq a (read))
 
-;;; Para asignar los tipos correspondientes
-(get-pokemon b)
-
-;;; Demostrar donde es efectivo
-
-(defvar *control* 0)
-
-(if (>= b 7)
-    (aviso 1)
-    (setf *control* (+ *control* 1)))
+(if (= a 1)
+    (setf *controlrep* (+ *controlrep* 1))
+    (setf *controlrep* (+ *controlrep* 2)))
     
-(if (<= b 0)
-    (aviso 2)
-    (setf *control* (+ *control* 1)))
-
-(efectivo)
-
-;;; Vamos a verificar si todo esta en orden
-(if (= *control* 2)
-    (print (aref tiposE (- b 1)))
-    (invalido))
+(loop for x from 1 to *controlrep*
+    ;;; Para definir si es primero o segundo
+    do(if (= x 1) 
+        (primerQ)
+        (segundoQ)
+    )
+        
+    ;;; Realizaremos el resto de operaciones
+    do(menut)
+    do(princ "")
+    do(setq b (read))
+    
+    ;;; Vamos a obtener a los tipos de pokemon disponibles
+    do(get-pokemon b)
+    
+    ;;; Vamos a tomar el control de los procesos
+    do(defvar *control* 0)
+    
+    do(if (>= b 7)
+        (aviso 1)
+        (setf *control* (+ *control* 1)))
+        
+    do(if (<= b 0)
+        (aviso 2)
+        (setf *control* (+ *control* 1)))
+        
+    ;;; Se mostrarán los valores depende de los resultados
+    do(efectivo)
+    
+    do(if (= *control* 2)
+        (print (aref tiposE (- b 1)))
+        (invalido))
+        
+    ;;; Si todo salio en orden se reiniciará el control de valores
+    do(setf *control* 0)
+)
