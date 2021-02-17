@@ -6,6 +6,7 @@
 ;;;-----------------------------------------------------------------
 
 ;;; Clase Pokedex **************************************************
+
 (setf tiposE (make-array '(6)))
 
 (setf (aref tiposE 0) "Fuego y ")
@@ -27,6 +28,7 @@
         (otherwise (print "No valido"))))
 
 ;;; Clase Vista ****************************************************
+
 (defun bienvenida ()
     (print "Bienvenido a la tabla de tipos de pokemon"))
 
@@ -42,6 +44,7 @@
     
 
 ;;; Clase Controlador & Main ***************************************
+
 (bienvenida)
 
 (menut1) ;;; Para mostrar los tipos de pokemon
