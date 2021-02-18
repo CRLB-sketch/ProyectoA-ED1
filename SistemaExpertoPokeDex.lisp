@@ -2,6 +2,8 @@
 ;;; Sistema Experto [Pokedex] - Proyecto Fase #1
 ;;; Algoritmos y Estructuras de Datos - UVG
 ;;;
+;;; Git: https://github.com/CRLB-sketch/ProyectoA-ED1.git
+;;;
 ;;; Autores: [Cristian Laynez, Sara Paguaga, Elean Rivas]
 ;;;-----------------------------------------------------------------
 
